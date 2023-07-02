@@ -1,0 +1,118 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #e0e7f1;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+main {
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #fafdfe;
+  padding: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+section {
+  display: table;
+  width: 100%;
+  border-spacing: 0 10px;
+}
+
+.heading {
+  display: table-row;
+}
+
+.heading > .heading__item {
+  display: table-cell;
+}
+
+.users-list {
+  display: table-row-group;
+}
+
+.users-list__user {
+  display: table-row;
+  border: 1px solid lightgray;
+  box-shadow: 0px 2px 3px 0.5px #a8a7a7b9;
+  border-radius: 10px;
+}
+
+.users-list__user > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.status--active:before {
+  background-color: teal;
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.status--inactive:before {
+  background-color: brown;
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.users-list__user-contact {
+  background-color: #037df4;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+.users-list__user-actions {
+  color: #037df4;
+  position: relative;
+}
+
+.users-list__user-actions:focus-within::after {
+  content: "Edit \A Delete";
+  text-align: center;
+  color: black;
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  width: 50px;
+  height: 30px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px 0.5px #a8a7a7b9;
+  z-index: 10;
+}
+
+.users-list__user-info {
+  display: flex;
+  align-items: center;
+}
+
+.users-list__user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px 5px 10px 20px;
+}
+
+.users-list__user-name {
+  margin: auto;
+}
+
+.users-list__user-nickname {
+  color: gray;
+}

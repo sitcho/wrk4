@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="InitialStyles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Users</h1>
+      <section>
+        <div class="heading">
+          <h2 class="heading__item">User</h2>
+          <h2 class="heading__item">Status</h2>
+          <h2 class="heading__item">Location</h2>
+          <h2 class="heading__item">Phone</h2>
+          <h2 class="heading__item">Contact</h2>
+          <h2 class="heading__item">Actions</h2>
+        </div>
+        <ul id="usersList" class="users-list"></ul>
+      </section>
+    </main>
+
+    <script>
+      const usersList = document.querySelector("#usersList");
+      const locations = [
+        "Tbilisi",
+        "Batumi",
+        "Kutaisi",
+        "Rustavi",
+        "Gori",
+        "Poti",
+        "Zugdidi",
+        "Telavi",
+        "Khashuri",
+        "Borjomi",
+        "Kobuleti",
+        "Marneuli",
+        "Akhaltsikhe",
+        "Tsqaltubo",
+        "Kaspi",
+      ];
+
+      const names = [
+        "Giorgi",
+        "Nika",
+        "Luka",
+        "Saba",
+        "Tornike",
+        "Irakli",
+        "Levan",
+        "Davit",
+        "Ana",
+        "Mari",
+        "Nino",
+        "Tamar",
+        "Salome",
+        "Ketevan",
+      ];
+
+      const lastnames = [
+        "Kapanadze",
+        "Kakushadze",
+        "Kalandadze",
+        "Kalandarishvili",
+        "Kalandia",
+        "Azarashvili",
+        "Azariashvili",
+        "Baramidze",
+        "Baramia",
+        "Nebieridze",
+        "Sharashidze",
+        "Sharashia",
+      ];
+
+      const indexes = [
+        "577",
+        "555",
+        "514",
+        "593",
+        "591",
+        "599",
+        "568",
+        "551",
+        "558",
+        "557",
+      ];
+
+      const users = new Array(10).fill(0).map((_, i) => {
+        return {
+          name: `${names[Math.floor(Math.random() * names.length)]} ${
+            lastnames[Math.floor(Math.random() * lastnames.length)]
+          }`,
+          status: Math.random() > 0.5 ? "Active" : "Inactive",
+          location: locations[Math.floor(Math.random() * locations.length)],
+          phone: `+995 ${
+            indexes[Math.floor(Math.random() * indexes.length)]
+          } ${Math.floor(Math.random() * 1000000)}`,
+        };
+      });
+
+      users.forEach((user, index) => {
+        const li = document.createElement("li");
+        li.classList.add("users-list__user");
+        li.innerHTML = `
+        <div>
+            <div class="users-list__user-info">
+                <img src="https://i.pickadummy.com/35x35" alt="${
+                  user.name
+                } image" class="users-list__user-image">
+                <div class="users-list__user-name-container">
+                    <h4 class="users-list__user-name">${user.name}</h4>
+                    <span class="users-list__user-nickname">@${user.name
+                      .split(" ")
+                      .map((p) => p.toLowerCase())
+                      .join("_")}</span>
+                </div>
+            </div>
+        </div>
+        <span class="status status--${user.status.toLowerCase()}">${
+          user.status
+        }</span>
+        <span>${user.location}</span>
+        <span>
+            <a class="users-list__user-phone" href="tel:${user.phone}">${
+          user.phone
+        }</a>
+        </span>
+        <div>
+            <button class="users-list__user-contact">Contact</button>
+        </div>
+        <span>
+            <button class="users-list__user-actions">
+                ...
+            </button>
+        </span>
+        `;
+        usersList.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
