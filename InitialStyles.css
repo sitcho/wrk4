@@ -16,57 +16,66 @@ main {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-section {
-  display: table;
+table {
   width: 100%;
+  height: auto;
+  border-collapse: separate;
   border-spacing: 0 10px;
 }
 
-.heading {
-  display: table-row;
+thead {
+  text-align: left;
 }
 
-.heading > .heading__item {
-  display: table-cell;
+.users-list__user-row {
+  border: 1px solid transparent;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
 }
 
-.users-list {
-  display: table-row-group;
+.users-list__user-row-divider {
+  height: 15px;
+  width: 100%;
+  background-color: rebeccapurple;
 }
 
-.users-list__user {
-  display: table-row;
-  border: 1px solid lightgray;
-  box-shadow: 0px 2px 3px 0.5px #a8a7a7b9;
-  border-radius: 10px;
+.users-list__user-info {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
 }
 
-.users-list__user > * {
-  display: table-cell;
-  vertical-align: middle;
+.users-list__user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
-.status--active:before {
-  background-color: teal;
+.users-list__user-name {
+  margin: 0;
+  padding: 0;
+}
+
+.user-status--active::before {
+  display: inline-block;
   content: "";
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  display: inline-block;
-  margin-right: 8px;
+  background-color: green;
 }
 
-.status--inactive:before {
-  background-color: brown;
+.user-status--inactive::before {
+  display: inline-block;
   content: "";
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  display: inline-block;
-  margin-right: 8px;
+  background-color: red;
 }
 
-.users-list__user-contact {
+.users-list__user-contact-btn {
   background-color: #037df4;
   color: white;
   border-radius: 5px;
@@ -74,45 +83,61 @@ section {
   padding: 5px 10px;
   font-weight: bold;
 }
+.users-list__user-contact-btn:hover {
+  background-color: lightblue;
+  color: #037df4;
+  cursor: pointer;
+}
 
 .users-list__user-actions {
-  color: #037df4;
   position: relative;
 }
 
-.users-list__user-actions:focus-within::after {
-  content: "Edit \A Delete";
-  text-align: center;
-  color: black;
+.users-list__user-actions ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: none;
   position: absolute;
-  left: 0px;
-  top: 20px;
-  width: 50px;
-  height: 30px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid transparent;
+  left: 20px;
+  top: -10px;
+}
+
+.users-list__user-actions ul li:first-child button {
+  background-color: lightblue;
   border-radius: 5px;
-  box-shadow: 1px 2px 3px 0.5px #a8a7a7b9;
-  z-index: 10;
+  border: 1px solid lightgray;
 }
 
-.users-list__user-info {
-  display: flex;
-  align-items: center;
+.users-list__user-actions ul li:last-child button {
+  background-color: lightpink;
+  border-radius: 5px;
+  border: 1px solid lightgray;
 }
 
-.users-list__user-image {
+.users-list__user-actions-list-item button {
   width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin: 10px 5px 10px 20px;
 }
 
-.users-list__user-name {
-  margin: auto;
+.users-list__user-actions-list-item button:hover {
+  scale: 1.2;
+  transition: 100ms;
+  color: white;
 }
 
-.users-list__user-nickname {
-  color: gray;
+.users-list__user-actions-btn {
+  transform: rotate(270deg);
+  font-weight: bold;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.users-list__user-actions-btn:hover {
+  scale: 1.5;
+  transition: 100ms;
+  color: #037df4;
+}
+
+.users-list__user-actions-btn:focus + ul {
+  display: block;
 }

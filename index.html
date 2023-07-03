@@ -12,21 +12,29 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="InitialStyles.css" />
+    <style>
+      /*
+            შეავსეთ სტილები აქ
+        */
+    </style>
   </head>
   <body>
     <main>
       <h1>Users</h1>
-      <section>
-        <div class="heading">
-          <h2 class="heading__item">User</h2>
-          <h2 class="heading__item">Status</h2>
-          <h2 class="heading__item">Location</h2>
-          <h2 class="heading__item">Phone</h2>
-          <h2 class="heading__item">Contact</h2>
-          <h2 class="heading__item">Actions</h2>
-        </div>
-        <ul id="usersList" class="users-list"></ul>
-      </section>
+      <table>
+        <thead>
+          <tr class="heading">
+            <th class="heading__item">User</th>
+            <th class="heading__item">Status</th>
+            <th class="heading__item">Location</th>
+            <th class="heading__item">Phone</th>
+            <th class="heading__item">Contact</th>
+            <th class="heading__item">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="usersList" class="users-list"></tbody>
+      </table>
     </main>
 
     <script>
@@ -107,13 +115,13 @@
         };
       });
 
-      users.forEach((user, index) => {
-        const li = document.createElement("li");
-        li.classList.add("users-list__user");
-        li.innerHTML = `
-        <div>
+      users.forEach((user) => {
+        const tr = document.createElement("tr");
+        tr.classList.add("users-list__user-row");
+        tr.innerHTML = `
+        <td class="users-list__user-column">
             <div class="users-list__user-info">
-                <img src="https://i.pickadummy.com/35x35" alt="${
+                <img src="https://i.pickadummy.com/300x100" alt="${
                   user.name
                 } image" class="users-list__user-image">
                 <div class="users-list__user-name-container">
@@ -124,26 +132,38 @@
                       .join("_")}</span>
                 </div>
             </div>
-        </div>
-        <span class="status status--${user.status.toLowerCase()}">${
-          user.status
-        }</span>
-        <span>${user.location}</span>
-        <span>
-            <a class="users-list__user-phone" href="tel:${user.phone}">${
-          user.phone
-        }</a>
-        </span>
-        <div>
-            <button class="users-list__user-contact">Contact</button>
-        </div>
-        <span>
-            <button class="users-list__user-actions">
-                ...
+        </td>
+        <td class="users-list__user-column">
+            <span class="user-status user-status--${user.status.toLowerCase()}">
+                ${user.status}
+            </span>
+        </td>
+        <td class="users-list__user-column">
+            ${user.location}
+        </td>
+        <td class="users-list__user-column">
+            <a class="users-list__user-phone" href="tel:${user.phone}">
+                ${user.phone}
+            </a>
+        </td>
+        <td class="users-list__user-column">
+            <button class="users-list__user-contact-btn">
+                Contact
             </button>
-        </span>
+        </td>
+        <td class="users-list__user-column">
+            <div class="users-list__user-actions">
+                <button class="users-list__user-actions-btn">
+                    ...
+                </button>
+                <ul class="users-list__user-actions-list">
+                    <li class="users-list__user-actions-list-item"><button>Edit</button></li>
+                    <li class="users-list__user-actions-list-item"><button>Delete</button></li>
+                </ul>
+            </div>
+        </td>
         `;
-        usersList.appendChild(li);
+        usersList.appendChild(tr);
       });
     </script>
   </body>
